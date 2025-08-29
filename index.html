@@ -290,14 +290,12 @@
         const parent = e.currentTarget.parentElement;
         const isOpen = parent.classList.contains('open');
 
-        // tutup semua dropdown lain
         document.querySelectorAll('.has-dropdown.open').forEach(li => {
           li.classList.remove('open');
           const b = li.querySelector('.nav-link');
           if (b) b.setAttribute('aria-expanded', 'false');
         });
 
-        // toggle yang diklik
         if (!isOpen) {
           parent.classList.add('open');
           e.currentTarget.setAttribute('aria-expanded', 'true');
@@ -308,7 +306,6 @@
       });
     });
 
-    // Klik di luar → tutup dropdown
     document.addEventListener('click', (e) => {
       const insideMenu = e.target.closest('.has-dropdown');
       if (!insideMenu) {
@@ -320,7 +317,6 @@
       }
     });
 
-    // ESC → tutup
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         document.querySelectorAll('.has-dropdown.open').forEach(li => {
